@@ -21,7 +21,7 @@ router.post("/register", async (req, res) => {
   const { error } = registerValidation(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
-  //check if the usser exists.
+  //check if the user exists.
   const emailExist = await User.findOne({ email: req.body.email });
   if (emailExist)
     return res.status(400).send("Email has already been registered.");
